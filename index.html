@@ -18,14 +18,14 @@
 
 function humanPlay() {
   let playerSelection = prompt("Please enter: Rock, Paper or Scissors!");
-  toString(playerSelection);
-        // make input/function case insensitive
-    let firstLetter = playerSelection.slice(0, 1);
-    let firstLetterCapital = firstLetter.toUpperCase();
-    let remainingInput = playerSelection.toLowerCase(1);
-    let lowerCaseInput = remainingInput.slice(1);
-    let finalString = firstLetterCapital.concat(lowerCaseInput);
-        // check if user entered valid option
+  // make input/function case insensitive
+  let firstLetter = playerSelection.slice(0, 1);
+  let firstLetterCapital = firstLetter.toUpperCase();
+  let remainingInput = playerSelection.toLowerCase(1);
+  let lowerCaseInput = remainingInput.slice(1);
+  let finalString = firstLetterCapital.concat(lowerCaseInput);
+  // check if user entered valid option
+
   if (finalString === "Rock") {
     return finalString;
   }
@@ -36,8 +36,7 @@ function humanPlay() {
     return finalString;
   }
   else {
-    let invalidInput = "Please enter either Rock, Paper or Scissors!";
-    return invalidInput;
+    return "Please enter either Rock, Paper or Scissors!";
   }
 }
 
@@ -45,18 +44,19 @@ function humanPlay() {
 
 function computerPlay() {
   let randomSelection = Math.floor(Math.random() * 3) + 1;
-if (randomSelection == 1) {
-  let rock = "Rock";
-  return rock;
-}
-else if (randomSelection == 2) {
-  let paper = "Paper";
-  return paper;
-}
-else {
-  let scissors = "Scissors";
-  return scissors;
-}
+
+  if (randomSelection == 1) {
+    let rock = "Rock";
+    return rock;
+  }
+  else if (randomSelection == 2) {
+    let paper = "Paper";
+    return paper;
+  }
+  else {
+    let scissors = "Scissors";
+    return scissors;
+  }
 }
 
 function singleGame() {
@@ -64,27 +64,23 @@ function singleGame() {
   let computerSelection = computerPlay();
   if (humanSelection === computerSelection) {
     let draw = "Draw!";
-  }
-  else if (humanSelection != computerSelection) {
+    return draw;
+  } else {
     if (humanSelection === "Rock" && computerSelection === "Paper") {
       let rockVsPaper = "Paper beats rock! You lose!";
       return rockVsPaper;
-    }
-    else if (humanSelection === "Paper" && computerSelection === "Scissors") {
+    } else if (humanSelection === "Paper" && computerSelection === "Scissors") {
       let paperVsScissors = "Scissors beats Paper! You lose!";
       return paperVsScissors;
-    }
-    else if ( humanSelection === "Scissors" && computerSelection === "Rock") {
+    } else if ( humanSelection === "Scissors" && computerSelection === "Rock") {
       let scissorsVsRock = "Rock beats Scissors! You lose!";
       return scissorsVsRock;
+    } else {
+      let winningMessage = humanSelection + " " + "beats " + computerSelection + "! " + "You win!";
+      return winningMessage; 
     }
-  }
-  else {
-    let winningMessage = humanSelection + " " + "beats " + computerSelection + "! " + "You win!";
-    return winningMessage; 
-  }
+  } 
 }
-
 
 
 // 1. Write a NEW function called game(). Use the previous function inside of this one to play a 
