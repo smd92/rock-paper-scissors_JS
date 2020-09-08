@@ -58,7 +58,7 @@ function computerPlay() {
   }
 }
 
-function singleGame() {
+function singleRound() {
   let humanSelection = humanPlay();
   let computerSelection = computerPlay();
   if (humanSelection === computerSelection) {
@@ -66,7 +66,7 @@ function singleGame() {
     return draw;
   } else {
     if (humanSelection === "Rock" && computerSelection === "Paper") {
-      let rockVsPaper = "Paper beats rock! You lose!";
+      let rockVsPaper = "Paper beats Rock! You lose!";
       return rockVsPaper;
     } else if (humanSelection === "Paper" && computerSelection === "Scissors") {
       let paperVsScissors = "Scissors beats Paper! You lose!";
@@ -83,6 +83,29 @@ function singleGame() {
     }
   } 
 }
+
+// play a 5 round game, track score, return result of game
+
+function game() {
+  let humanScore = 0;
+  let computerScore = 0;
+  let roundOne = singleRound();
+  if (roundOne === "Draw!") {
+    return roundOne + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+  }
+  else if (roundOne === "Paper beats rock! You lose!" || "Scissors beats Paper! You lose!" || "Rock beats Scissors! You lose!") {
+    computerScore++;
+    return roundOne + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+  }
+  else if (roundOne === humanSelection + " " + "beats " + computerSelection + "! You win!") {
+    humanScore++;
+    return roundOne + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+  }
+  else {
+    return "Please enter either Rock, Paper or Scissors!";
+  }
+}
+
 
 
 // 1. Write a NEW function called game(). Use the previous function inside of this one to play a 
