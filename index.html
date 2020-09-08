@@ -44,7 +44,6 @@ function humanPlay() {
 
 function computerPlay() {
   let randomSelection = Math.floor(Math.random() * 3) + 1;
-
   if (randomSelection == 1) {
     let rock = "Rock";
     return rock;
@@ -75,9 +74,12 @@ function singleGame() {
     } else if ( humanSelection === "Scissors" && computerSelection === "Rock") {
       let scissorsVsRock = "Rock beats Scissors! You lose!";
       return scissorsVsRock;
-    } else {
-      let winningMessage = humanSelection + " " + "beats " + computerSelection + "! " + "You win!";
-      return winningMessage; 
+    } else if (humanSelection === "Please enter either Rock, Paper or Scissors!") {
+      return humanSelection;
+    }
+  else {
+    let winningMessage = humanSelection + " " + "beats " + computerSelection + "! You win!";
+    return winningMessage; 
     }
   } 
 }
