@@ -89,21 +89,84 @@ function singleRound() {
 function game() {
   let humanScore = 0;
   let computerScore = 0;
-  let roundOne = singleRound();
-  if (roundOne === "Draw!") {
-    return roundOne + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+  function roundOne() {
+    let result = singleRound();
+    if (result === "Draw!") {
+      return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Paper beats Rock! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Scissors beats Paper! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Rock beats Scissors! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+   }
+    else if (result === "Rock beats Scissors! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Paper beats Rock! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Scissors beats Paper! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else {
+      return result;
+    }
   }
-  else if (roundOne === "Paper beats rock! You lose!" || "Scissors beats Paper! You lose!" || "Rock beats Scissors! You lose!") {
-    computerScore++;
-    return roundOne + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+  console.log(roundOne());
+  function roundTwo() {
+    let result = singleRound();
+    if (result === "Draw!") {
+      return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Paper beats Rock! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Scissors beats Paper! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Rock beats Scissors! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+   }
+    else if (result === "Rock beats Scissors! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Paper beats Rock! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Scissors beats Paper! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else {
+      return result;
+    }
   }
-  else if (roundOne === humanSelection + " " + "beats " + computerSelection + "! You win!") {
-    humanScore++;
-    return roundOne + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+  console.log(roundTwo());
+
+  if (humanScore > computerScore) {
+    return "Victory is yours!";
+  }
+  else if (humanScore == computerScore) {
+    return "Total Draw!"
   }
   else {
-    return "Please enter either Rock, Paper or Scissors!";
-  }
+    return "You lost!";
+}
 }
 
 
