@@ -119,10 +119,11 @@ function game() {
       return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
     }
     else {
-      return result;
+      return roundOne();
     }
   }
   console.log(roundOne());
+
   function roundTwo() {
     let result = singleRound();
     if (result === "Draw!") {
@@ -153,10 +154,115 @@ function game() {
       return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
     }
     else {
-      return result;
+      return roundTwo();
     }
   }
   console.log(roundTwo());
+
+  function roundThree() {
+    let result = singleRound();
+    if (result === "Draw!") {
+      return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Paper beats Rock! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Scissors beats Paper! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Rock beats Scissors! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+   }
+    else if (result === "Rock beats Scissors! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Paper beats Rock! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Scissors beats Paper! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else {
+      return roundThree();
+    }
+  }
+  console.log(roundThree());
+
+  function roundFour() {
+    let result = singleRound();
+    if (result === "Draw!") {
+      return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Paper beats Rock! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Scissors beats Paper! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Rock beats Scissors! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+   }
+    else if (result === "Rock beats Scissors! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Paper beats Rock! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Scissors beats Paper! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else {
+      return roundFour();
+    }
+  }
+  console.log(roundFour());
+
+  function roundFive() {
+    let result = singleRound();
+    if (result === "Draw!") {
+      return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Paper beats Rock! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Scissors beats Paper! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Rock beats Scissors! You lose!") {
+      computerScore++;
+      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+   }
+    else if (result === "Rock beats Scissors! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Paper beats Rock! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else if (result === "Scissors beats Paper! You win!") {
+      humanScore++;
+      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+    else {
+      return roundFive();
+    }
+  }
+  console.log(roundFive());
 
   if (humanScore > computerScore) {
     return "Victory is yours!";
