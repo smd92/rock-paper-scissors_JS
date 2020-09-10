@@ -6,14 +6,6 @@
 </head>
 <body>
   <script>
-
-// 1. Create function that randomly returns either rock, paper or scissors, name it computerPlay
-// 2. Write a function that plays a single round of Rock Paper Scissors. 
-// 3. The function should take two parameters - the playerSelection and computerSelection - and then return a string that declares the 
-//    winner of the round like so: "You Lose! Paper beats Rock"
-//    3.1 Make function case insensitive!
-//    3.2 return - NOT console.log();
-
 // getting and processing user input
 
 function humanPlay() {
@@ -71,7 +63,7 @@ function singleRound() {
     } else if (humanSelection === "Paper" && computerSelection === "Scissors") {
       let paperVsScissors = "Scissors beats Paper! You lose!";
       return paperVsScissors;
-    } else if ( humanSelection === "Scissors" && computerSelection === "Rock") {
+    } else if (humanSelection === "Scissors" && computerSelection === "Rock") {
       let scissorsVsRock = "Rock beats Scissors! You lose!";
       return scissorsVsRock;
     } else if (humanSelection === "Please enter either Rock, Paper or Scissors!") {
@@ -89,7 +81,7 @@ function singleRound() {
 function game() {
   let humanScore = 0;
   let computerScore = 0;
-  function roundOne() {
+  function playRound() {
     let result = singleRound();
     if (result === "Draw!") {
       return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
@@ -119,150 +111,19 @@ function game() {
       return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
     }
     else {
-      return roundOne();
+      return playRound();
     }
   }
-  console.log(roundOne());
+  console.log(playRound());
 
-  function roundTwo() {
-    let result = singleRound();
-    if (result === "Draw!") {
-      return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Paper beats Rock! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Scissors beats Paper! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Rock beats Scissors! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-   }
-    else if (result === "Rock beats Scissors! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Paper beats Rock! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Scissors beats Paper! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else {
-      return roundTwo();
-    }
-  }
-  console.log(roundTwo());
-
-  function roundThree() {
-    let result = singleRound();
-    if (result === "Draw!") {
-      return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Paper beats Rock! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Scissors beats Paper! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Rock beats Scissors! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-   }
-    else if (result === "Rock beats Scissors! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Paper beats Rock! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Scissors beats Paper! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else {
-      return roundThree();
-    }
-  }
-  console.log(roundThree());
-
-  function roundFour() {
-    let result = singleRound();
-    if (result === "Draw!") {
-      return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Paper beats Rock! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Scissors beats Paper! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Rock beats Scissors! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-   }
-    else if (result === "Rock beats Scissors! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Paper beats Rock! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Scissors beats Paper! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else {
-      return roundFour();
-    }
-  }
-  console.log(roundFour());
-
-  function roundFive() {
-    let result = singleRound();
-    if (result === "Draw!") {
-      return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Paper beats Rock! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Scissors beats Paper! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Rock beats Scissors! You lose!") {
-      computerScore++;
-      return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-   }
-    else if (result === "Rock beats Scissors! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Paper beats Rock! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else if (result === "Scissors beats Paper! You win!") {
-      humanScore++;
-      return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-    else {
-      return roundFive();
-    }
-  }
-  console.log(roundFive());
+  let roundTwo = playRound();
+  console.log(roundTwo);
+  let roundThree = playRound()
+  console.log(roundThree);
+  let roundFour = playRound();
+  console.log(roundFour);
+  let roundFive = playRound();
+  console.log(roundFive);
 
   if (humanScore > computerScore) {
     return "Victory is yours!";
@@ -274,15 +135,6 @@ function game() {
     return "You lost!";
 }
 }
-
-
-
-// 1. Write a NEW function called game(). Use the previous function inside of this one to play a 
-//   5 round game that keeps score and reports a winner or loser at the end.
-//   1.1 either use loop or call function 5 times
-//   1.2 at this point console.log should be used to display the results of each round and the winner at the end
-//   1.3 Use prompt() to get user input
-//   1.4 edit previous functions and/or add helper functions if useful
-  </script>
-</body>
+    </script>
+  </body>
 </html>
