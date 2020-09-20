@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <button id = "btn1">Rock</button>
+  <button id = "btn2">Paper</button>
+  <button id = "btn3">Scissors</button>
+
+
+  <script>
+  // getting and processing user input
+  function humanPlay() {
+    let playerSelection = prompt("Please enter: Rock, Paper or Scissors!");
+    // make input/function case insensitive
+    let firstLetter = playerSelection.slice(0, 1);
+    let firstLetterCapital = firstLetter.toUpperCase();
+    let remainingInput = playerSelection.toLowerCase(1);
+    let lowerCaseInput = remainingInput.slice(1);
+    let finalString = firstLetterCapital.concat(lowerCaseInput);
+    // check if user entered valid option
+
+    if (finalString === "Rock") {
+      return finalString;
+    }
+    else if (finalString === "Paper") {
+      return finalString;
+    }
+    else if (finalString === "Scissors") {
+      return finalString;
+    }
+    else {
+      return "Please enter either Rock, Paper or Scissors!";
+    }
+  }
+
+  // generating random output
+
+  function computerPlay() {
+    let randomSelection = Math.floor(Math.random() * 3) + 1;
+    if (randomSelection == 1) {
+      let rock = "Rock";
+      return rock;
+    }
+    else if (randomSelection == 2) {
+      let paper = "Paper";
+      return paper;
+    }
+    else {
+      let scissors = "Scissors";
+      return scissors;
+    }
+  }
+
+  function singleRound() {
+    let humanSelection = humanPlay();
+    let computerSelection = computerPlay();
+    if (humanSelection === computerSelection) {
+      let draw = "Draw!";
+      return draw;
+    } else {
+      if (humanSelection === "Rock" && computerSelection === "Paper") {
+        let rockVsPaper = "Paper beats Rock! You lose!";
+        return rockVsPaper;
+      } else if (humanSelection === "Paper" && computerSelection === "Scissors") {
+        let paperVsScissors = "Scissors beats Paper! You lose!";
+        return paperVsScissors;
+      } else if (humanSelection === "Scissors" && computerSelection === "Rock") {
+        let scissorsVsRock = "Rock beats Scissors! You lose!";
+        return scissorsVsRock;
+      } else if (humanSelection === "Please enter either Rock, Paper or Scissors!") {
+        return humanSelection;
+      }
+    else {
+      let winningMessage = humanSelection + " " + "beats " + computerSelection + "! You win!";
+      return winningMessage; 
+      }
+    } 
+  }
+
+  // play an X round game, track score, return result of game
+
+  function game() {
+    let humanScore = 0;
+    let computerScore = 0;
+    function playRound() {
+      let result = singleRound();
+      if (result === "Draw!") {
+        return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+      }
+      else if (result === "Paper beats Rock! You lose!") {
+        computerScore++;
+        return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+      }
+      else if (result === "Scissors beats Paper! You lose!") {
+        computerScore++;
+        return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+      }
+      else if (result === "Rock beats Scissors! You lose!") {
+        computerScore++;
+        return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+    }
+      else if (result === "Rock beats Scissors! You win!") {
+        humanScore++;
+        return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+      }
+      else if (result === "Paper beats Rock! You win!") {
+        humanScore++;
+        return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+      }
+      else if (result === "Scissors beats Paper! You win!") {
+        humanScore++;
+        return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
+      }
+      else {
+        return playRound();
+      }
+    }
+
+    if (humanScore > computerScore) {
+      return "Victory is yours!";
+    }
+    else if (humanScore == computerScore) {
+      return "Total Draw!";
+    }
+    else {
+      return "You lost!";
+    }
+  }
+  </script>
+</body>
+</html>
