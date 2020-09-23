@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="style.css">
   <title>Page Title</title>
   <meta charset="UTF-8"/>
 </head>
 <body>
-  <button id = "btn1">Rock</button>
-  <button id = "btn2">Paper</button>
-  <button id = "btn3">Scissors</button>
-
+  <div id = "container">
+    <div id = "buttons">
+      <button id = "btnRock">Rock</button>
+      <button id = "btnPaper">Paper</button>
+      <button id = "btnScissors">Scissors</button>
+    </div>
+      <p id = "you">You</p>
+      <p id= "computer">The Computer</p>
+      <p id = "scoreHuman">0</p>
+      <p id = "separator">:</p>
+      <p id = "scoreComputer">0</p>
+      <p id = "message">testmessage</p>
+  </div>
 
   <script>
   // getting and processing user input
-  function humanPlay() {
+  /* function humanPlay() {
     let playerSelection = prompt("Please enter: Rock, Paper or Scissors!");
     // make input/function case insensitive
     let firstLetter = playerSelection.slice(0, 1);
@@ -34,7 +44,7 @@
     else {
       return "Please enter either Rock, Paper or Scissors!";
     }
-  }
+  } */
 
   // generating random output
 
@@ -52,37 +62,40 @@
       let scissors = "Scissors";
       return scissors;
     }
-  }
+  };
 
-  function singleRound() {
-    let humanSelection = humanPlay();
+  function playRound(humanSelection) {
+    let humanScore = 0;
+    let computerScore = 0;
     let computerSelection = computerPlay();
     if (humanSelection === computerSelection) {
       let draw = "Draw!";
       return draw;
     } else {
       if (humanSelection === "Rock" && computerSelection === "Paper") {
+        computerScore++;
         let rockVsPaper = "Paper beats Rock! You lose!";
         return rockVsPaper;
       } else if (humanSelection === "Paper" && computerSelection === "Scissors") {
+        computerScore++;
         let paperVsScissors = "Scissors beats Paper! You lose!";
         return paperVsScissors;
       } else if (humanSelection === "Scissors" && computerSelection === "Rock") {
+        computerScore++;
         let scissorsVsRock = "Rock beats Scissors! You lose!";
         return scissorsVsRock;
-      } else if (humanSelection === "Please enter either Rock, Paper or Scissors!") {
-        return humanSelection;
       }
     else {
+      humanScore++;
       let winningMessage = humanSelection + " " + "beats " + computerSelection + "! You win!";
       return winningMessage; 
       }
     } 
-  }
+  };
 
   // play an X round game, track score, return result of game
 
-  function game() {
+  /* function game() {
     let humanScore = 0;
     let computerScore = 0;
     function playRound() {
@@ -128,7 +141,31 @@
     else {
       return "You lost!";
     }
-  }
+  } */
+
+  // DOM manipulation
+
+  const btnRock = document.querySelector("#btnRock");
+  const btnPaper = document.querySelector("#btnPaper");
+  const btnScissors = document.querySelector("#btnScissors");
+  const message = document.querySelector("#message");
+  const scoreA = document.querySelector("#scoreHuman");
+  const scoreB = document.querySelector("#scoreComputer");
+
+  btnRock.addEventListener("click", () => {
+    playRound("Rock");
+  });
+
+  btnPaper.addEventListener("click", () => {
+    playRound("Paper");
+  });
+
+  btnScissors.addEventListener("click", () => {
+    playRound("Scissors");
+  });
+
+
+
   </script>
 </body>
 </html>
