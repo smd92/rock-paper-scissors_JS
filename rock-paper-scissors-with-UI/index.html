@@ -2,51 +2,29 @@
 <html>
 <head>
   <link rel="stylesheet" href="style.css">
-  <title>Page Title</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <title>Rock Paper Scissors by smd92</title>
   <meta charset="UTF-8"/>
 </head>
 <body>
   <div id = "container">
     <div id = "buttons">
-      <button id = "btnRock">Rock</button>
-      <button id = "btnPaper">Paper</button>
-      <button id = "btnScissors">Scissors</button>
+      <button id = "btnRock" class = "btn">Rock</button>
+      <button id = "btnPaper" class = "btn">Paper</button>
+      <button id = "btnScissors" class = "btn">Scissors</button>
     </div>
       <p id = "you">You</p>
       <p id= "computer">The Computer</p>
       <p id = "scoreHuman">0</p>
       <p id = "separator">:</p>
       <p id = "scoreComputer">0</p>
-      <p id = "message">testmessage</p>
+      <p id = "message">Choose your weapon</p>
+      <p id = "result"></p>
   </div>
 
   <script>
-  // getting and processing user input
-  /* function humanPlay() {
-    let playerSelection = prompt("Please enter: Rock, Paper or Scissors!");
-    // make input/function case insensitive
-    let firstLetter = playerSelection.slice(0, 1);
-    let firstLetterCapital = firstLetter.toUpperCase();
-    let remainingInput = playerSelection.toLowerCase(1);
-    let lowerCaseInput = remainingInput.slice(1);
-    let finalString = firstLetterCapital.concat(lowerCaseInput);
-    // check if user entered valid option
 
-    if (finalString === "Rock") {
-      return finalString;
-    }
-    else if (finalString === "Paper") {
-      return finalString;
-    }
-    else if (finalString === "Scissors") {
-      return finalString;
-    }
-    else {
-      return "Please enter either Rock, Paper or Scissors!";
-    }
-  } */
-
-  // generating random output
+  // generating random output for computerSelection
 
   function computerPlay() {
     let randomSelection = Math.floor(Math.random() * 3) + 1;
@@ -64,93 +42,87 @@
     }
   };
 
+// playing a single round
+
   function playRound(humanSelection) {
-    let humanScore = 0;
-    let computerScore = 0;
+    const message = document.querySelector("#message");
     let computerSelection = computerPlay();
-    if (humanSelection === computerSelection) {
-      let draw = "Draw!";
-      return draw;
-    } else {
-      if (humanSelection === "Rock" && computerSelection === "Paper") {
-        computerScore++;
-        let rockVsPaper = "Paper beats Rock! You lose!";
-        return rockVsPaper;
-      } else if (humanSelection === "Paper" && computerSelection === "Scissors") {
-        computerScore++;
-        let paperVsScissors = "Scissors beats Paper! You lose!";
-        return paperVsScissors;
-      } else if (humanSelection === "Scissors" && computerSelection === "Rock") {
-        computerScore++;
-        let scissorsVsRock = "Rock beats Scissors! You lose!";
-        return scissorsVsRock;
-      }
-    else {
-      humanScore++;
-      let winningMessage = humanSelection + " " + "beats " + computerSelection + "! You win!";
-      return winningMessage; 
-      }
-    } 
-  };
+      if (humanSelection === computerSelection) {
+        let draw = "Draw! Nobody scores a point!";
+        message.innerHTML = draw;
+      } else {
 
-  // play an X round game, track score, return result of game
+        if (humanSelection === "Rock" && computerSelection === "Paper") {
+          let rockVsPaper = "Paper beats Rock! You lose!";
+          trackScoreBot(rockVsPaper);
 
-  /* function game() {
-    let humanScore = 0;
-    let computerScore = 0;
-    function playRound() {
-      let result = singleRound();
-      if (result === "Draw!") {
-        return result + " Nobody scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-      }
-      else if (result === "Paper beats Rock! You lose!") {
-        computerScore++;
-        return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-      }
-      else if (result === "Scissors beats Paper! You lose!") {
-        computerScore++;
-        return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-      }
-      else if (result === "Rock beats Scissors! You lose!") {
-        computerScore++;
-        return result + " The Computer scores a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-    }
-      else if (result === "Rock beats Scissors! You win!") {
-        humanScore++;
-        return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-      }
-      else if (result === "Paper beats Rock! You win!") {
-        humanScore++;
-        return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-      }
-      else if (result === "Scissors beats Paper! You win!") {
-        humanScore++;
-        return result + " You score a point!" + " Total Score: You " + humanScore + " : " + computerScore + " Computer";
-      }
-      else {
-        return playRound();
-      }
-    }
+        } else if (humanSelection === "Paper" && computerSelection === "Scissors") {
+          let paperVsScissors = "Scissors beats Paper! You lose!";
+          trackScoreBot(paperVsScissors);
 
-    if (humanScore > computerScore) {
-      return "Victory is yours!";
+        } else if (humanSelection === "Scissors" && computerSelection === "Rock") {
+          let scissorsVsPaper = "Rock beats Scissors! You lose!";
+          trackScoreBot(scissorsVsPaper);
+
+        } else {
+        let winningMessage = humanSelection + " " + "beats " + computerSelection + "! You win!";
+          trackScorePlayer(winningMessage);
+      }
     }
-    else if (humanScore == computerScore) {
-      return "Total Draw!";
+  }
+
+// keeping track of score
+
+  var countPlayer = 0;
+  var countBot = 0;
+
+  function trackScorePlayer(result) {
+    const scoreA = document.querySelector("#scoreHuman");
+    const message = document.querySelector("#message");
+    countPlayer++;
+
+    if (countPlayer === 5) {
+      scorePlayer = scoreA.innerHTML;
+      scorePlayer++;
+      scoreA.innerHTML = scorePlayer;
+      message.innerHTML = "Congratulations! You win!";
+      replaceButtons();
     }
-    else {
-      return "You lost!";
+    
+    else if (countPlayer < 5) {
+      scorePlayer = scoreA.innerHTML;
+      scorePlayer++;
+      scoreA.innerHTML = scorePlayer;
+      message.innerHTML = result;
     }
-  } */
+  }
+
+  function trackScoreBot(result) {
+    const scoreB = document.querySelector("#scoreComputer");
+    const message = document.querySelector("#message");
+    countBot++;
+
+    if (countBot === 5) {      
+      scoreBot = scoreB.innerHTML;
+      scoreBot++;
+      scoreB.innerHTML = scoreBot;
+      message.innerHTML = "Total Defeat! You lose!";
+      replaceButtons();
+    }
+    
+    else if (countBot < 5) {
+    scoreBot = scoreB.innerHTML;
+    scoreBot++;
+    scoreB.innerHTML = scoreBot;
+    message.innerHTML = result;
+    }
+  }
 
   // DOM manipulation
 
   const btnRock = document.querySelector("#btnRock");
   const btnPaper = document.querySelector("#btnPaper");
   const btnScissors = document.querySelector("#btnScissors");
-  const message = document.querySelector("#message");
-  const scoreA = document.querySelector("#scoreHuman");
-  const scoreB = document.querySelector("#scoreComputer");
 
   btnRock.addEventListener("click", () => {
     playRound("Rock");
@@ -164,8 +136,27 @@
     playRound("Scissors");
   });
 
+  function replaceButtons() {
+    const container = document.querySelector("#container");
+    const buttons = document.querySelector("#buttons");
 
+    buttons.parentNode.removeChild(buttons);
 
-  </script>
+    const resetDiv = document.createElement("div");
+    resetDiv.id = "buttons";
+    container.appendChild(resetDiv);
+
+    let resetButton = document.createElement("button");
+    resetButton.className = "btn";
+    let resetButtonText = document.createTextNode("Reset");
+    resetButton.appendChild(resetButtonText);
+    resetDiv.appendChild(resetButton);
+
+    resetButton.addEventListener("click", () => {
+      location.reload();
+    });
+  }
+
+</script>
 </body>
 </html>
