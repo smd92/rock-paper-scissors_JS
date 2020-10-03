@@ -1,0 +1,105 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 800px 1fr;
+    grid-template-rows: 1fr 800px 1fr;
+    grid-template-areas: 
+    ". . ."
+    ". container ."
+    ". . .";
+    background-color: black;
+    font-family: 'Share Tech Mono', monospace;
+    color: #61fd07;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1fr 200px 300px 200px 1fr;
+    grid-template-rows: 1fr 100px 100px 100px 100px;
+    grid-template-areas:
+    ". you . computer ."
+    ". scoreHuman separator scoreComputer ."
+    ". . message . ."
+    ". . buttons . ."
+    ". . result . .";
+    grid-area: container;
+    justify-self: center;
+    align-self: center;
+}
+
+#you {
+    grid-area: you;
+    justify-self: center;
+    align-self: center;
+}
+
+#computer {
+    grid-area: computer;
+    justify-self: center;
+    align-self: center;
+}
+
+#scoreHuman {
+    grid-area: scoreHuman;
+    justify-self: center;
+    align-self: center;
+    font-size: 100px;
+}
+
+#separator {
+    grid-area: separator;
+    justify-self: center;
+    align-self: center;
+    font-size: 100px;
+}
+
+#scoreComputer {
+    grid-area: scoreComputer;
+    justify-self: center;
+    align-self: center;
+    font-size: 100px;
+}
+
+#message {
+    grid-area: message;
+    justify-self: center;
+    align-self: center;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    grid-area: buttons;
+    justify-self: center;
+    align-self: center;
+}
+
+.btn {
+    -webkit-appearance: none;
+    color: #61fd07;
+    background-color: black;
+    padding: 5px;
+    margin: 5px;
+    width: 80px;
+    font-size: 15px;
+    border: solid;
+    border-width: 1px;
+}
+
+.btn:hover {
+    -webkit-appearance: none;
+    color: #61fd07;
+    background-color: black;
+    padding: 5px;
+    margin: 5px;
+    width: 80px;
+    font-size: 15px;
+    border: solid;
+    border-width: 1px;
+    transform: scale(1.1);
+}
+
+#result {
+    grid-area: result;
+    justify-self: center;
+    align-self: center;
+}

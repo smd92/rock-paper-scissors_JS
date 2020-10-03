@@ -1,2 +1,2 @@
 # rock-paper-scissors
-Rock Paper Scissors with JS
+Rock Paper Scissors in JS with UI
